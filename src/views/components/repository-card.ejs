@@ -1,0 +1,31 @@
+<% repos.forEach(function(item) { %>
+<div class="bg-white shadow-md rounded px-8 pt-6 pb-8 max-w-80">
+  <div class="text-xl">
+    <a href="<%= item.html_url %>"> <%= item.name %> </a>
+  </div>
+  <div class="text-xs">Created by: <%= item.owner.login %></div>
+  <div><%= item.description %></div>
+  <div>
+    <% if (item.license) {%>
+    <div>
+      <a href="<%= item.license.url %>">
+        <i class="fa-solid fa-file-signature"></i>
+        <%= item.license.name %>
+      </a>
+    </div>
+    <% } %>
+    <div class="flex">
+      <div class="mr-2"><i class="fa-solid fa-star"></i> <%= item.score %></div>
+      <div class="mr-2">
+        <i class="fa-solid fa-eye"></i> <%= item.watchers %>
+      </div>
+      <% if (item.language) { %>
+      <div><i class="fa-solid fa-code"></i> <%= item.language %></div>
+      <% } %>
+    </div>
+  </div>
+  <% if (item?.homepage) {%>
+  <a href="<%= item.homepage %>">Homepage</a>
+  <% } %>
+</div>
+<% }); %>
