@@ -1,31 +1,42 @@
-<% repos.forEach(function(item) { %>
-<div class="bg-white shadow-md rounded px-8 pt-6 pb-8 max-w-80">
-  <div class="text-xl">
-    <a href="<%= item.html_url %>"> <%= item.name %> </a>
-  </div>
-  <div class="text-xs">Created by: <%= item.owner.login %></div>
-  <div><%= item.description %></div>
-  <div>
-    <% if (item.license) {%>
-    <div>
-      <a href="<%= item.license.url %>">
-        <i class="fa-solid fa-file-signature"></i>
-        <%= item.license.name %>
-      </a>
-    </div>
-    <% } %>
-    <div class="flex">
-      <div class="mr-2"><i class="fa-solid fa-star"></i> <%= item.score %></div>
-      <div class="mr-2">
-        <i class="fa-solid fa-eye"></i> <%= item.watchers %>
+<div data-loading-class="hidden">
+  <div class="max-w-screen-xl grid grid-cols-5 gap-4">
+    <% repos.forEach(function(item) { %>
+    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 max-w-80">
+      <div
+        class="text-xl text-transparent bg-gradient-to-r from-blue-500 to-teal-500 bg-clip-text"
+      >
+        <a href="<%= item.html_url %>"> <%= item.name %> </a>
       </div>
-      <% if (item.language) { %>
-      <div><i class="fa-solid fa-code"></i> <%= item.language %></div>
+      <div class="text-xs">
+        Created by: <span class="text-violet-600"><%= item.owner.login %></span>
+      </div>
+      <div><%= item.description %></div>
+      <div>
+        <% if (item.license) {%>
+        <div>
+          <a href="<%= item.license.url %>">
+            <i class="fa-solid fa-file-signature"></i>
+            <%= item.license.name %>
+          </a>
+        </div>
+        <% } %>
+        <div class="flex">
+          <div class="mr-2">
+            <i class="fa-solid fa-star"></i> <%= item.score %>
+          </div>
+          <div class="mr-2">
+            <i class="fa-solid fa-eye"></i> <%= item.watchers %>
+          </div>
+          <% if (item.language) { %>
+          <div><i class="fa-solid fa-code"></i> <%= item.language %></div>
+          <% } %>
+        </div>
+      </div>
+      <% if (item?.homepage) {%>
+      <a href="<%= item.homepage %>">Homepage</a>
       <% } %>
     </div>
+    <% }); %>
   </div>
-  <% if (item?.homepage) {%>
-  <a href="<%= item.homepage %>">Homepage</a>
-  <% } %>
+  <%- include('./pagination.ejs', {pages: pages, activePage: activePage}) %>
 </div>
-<% }); %>
