@@ -10,6 +10,7 @@
       integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC"
       crossorigin="anonymous"
     ></script>
+    <script src="https://unpkg.com/htmx.org/dist/ext/loading-states.js"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -17,41 +18,22 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link rel="stylesheet" href="components.css" />
   </head>
-  <body class="bg-gray-800">
+  <body class="bg-neutral-800">
     <main>
       <form
         hx-post="/search"
         hx-target="#search-results"
-        class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+        hx-indicator="#indicator"
+        hx-ext="loading-states"
       >
-        <label
-          class="block text-gray-700 text-sm font-bold mb-2"
-          for="username"
-        >
-          Repository name
-        </label>
-        <input
-          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          id="search"
-          name="search"
-          type="text"
-          placeholder="search"
-        />
-        <button
-          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          type="submit"
-        >
-          Search
-        </button>
+        <%- include('./components/search.ejs') %>
+        <div class="flex justify-center items-center mb-4">
+          <%- include('./components/loader.ejs') %>
+          <div id="search-results"></div>
+        </div>
       </form>
-
-      <div class="flex justify-center items-center">
-        <div
-          id="search-results"
-          class="max-w-screen-xl grid grid-cols-5 gap-4"
-        ></div>
-      </div>
     </main>
   </body>
 </html>

@@ -1,0 +1,55 @@
+<div class="flex flex-wrap items-center justify-center max-w-screen-xl mt-4">
+    <button
+    hx-post="/search"
+    hx-target="#search-results"
+    hx-indicator="#indicator"
+    hx-vals='{"page": "<%= parseInt(activePage, 10) - 1 %>"}'
+    hx-include="#search"
+    class=" 
+    bg-gray-600 hover:bg-gray-800 
+    text-white hover:text-teal-500
+    transition-all  
+    border border-transparent hover:border-teal-500 rounded 
+    w-8 h-8 ml-2 
+    cursor-pointer"
+    >
+    &lt;
+    </button>
+
+    <% pagination.forEach(function(page){ %>
+    <button
+      hx-post="/search"
+      hx-target="#search-results"
+      hx-indicator="#indicator"
+      hx-vals='{"page": "<%= page %>"}'
+      hx-include="#search"
+      class=" 
+      <%- activePage == page ? 
+      "bg-gray-900 text-white border-transparent hover:border-teal-500 hover:text-teal-500" : 
+      "bg-gray-100 text-black hover:border-teal-500 hover:text-teal-500 hover:bg-slate-700" %>
+      transition-all 
+      border rounded 
+      w-8 h-8 ml-2 
+      cursor-pointer"
+    >
+      <%= page %>
+    </button>
+    <% }); %>
+
+    <button
+    hx-post="/search"
+    hx-target="#search-results"
+    hx-indicator="#indicator"
+    hx-vals='{"page": "<%= parseInt(activePage, 10) + 1 %>"}'
+    hx-include="#search"
+    class=" 
+    bg-gray-600 hover:bg-gray-800 
+    text-white hover:text-teal-500
+    transition-all  
+    border border-transparent hover:border-teal-500 rounded 
+    w-8 h-8 ml-2 
+    cursor-pointer"
+    >
+    &gt;
+    </button>
+</div>
