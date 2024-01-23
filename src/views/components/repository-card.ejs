@@ -1,26 +1,20 @@
 <div data-loading-class="hidden">
   <div class="max-w-screen-xl grid grid-cols-5 gap-4">
     <% repos.forEach(function(item) { %>
-    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 max-w-80">
+    <div
+      class="min-h-64 bg-white shadow-md rounded px-6 py-4 max-w-80 hover:shadow-xl transition duration-150 ease-out hover:ease-in"
+    >
       <div
-        class="text-xl text-transparent bg-gradient-to-r from-blue-500 to-teal-500 bg-clip-text"
+        class="text-xl text-transparent bg-gradient-to-r from-violet-500 to-teal-500 bg-clip-text"
       >
         <a href="<%= item.html_url %>"> <%= item.name %> </a>
       </div>
-      <div class="text-xs">
-        Created by: <span class="text-violet-600"><%= item.owner.login %></span>
+      <div class="text-xs mb-1.5">
+        <span class="text-violet-700"> by <%= item.owner.login %></span>
       </div>
-      <div><%= item.description %></div>
+      <div class="text-pretty"><%= item.description %></div>
       <div>
-        <% if (item.license) {%>
-        <div>
-          <a href="<%= item.license.url %>">
-            <i class="fa-solid fa-file-signature"></i>
-            <%= item.license.name %>
-          </a>
-        </div>
-        <% } %>
-        <div class="flex">
+        <div class="flex text-sm mb-1.5">
           <div class="mr-2">
             <i class="fa-solid fa-star"></i> <%= item.score %>
           </div>
@@ -32,8 +26,19 @@
           <% } %>
         </div>
       </div>
-      <% if (item?.homepage) {%>
-      <a href="<%= item.homepage %>">Homepage</a>
+      <% if (item.license) {%>
+      <div class="text-xs">
+        <a href="<%= item.license.url %>">
+          <i class="fa-solid fa-file-signature"></i>
+          <%= item.license.name %>
+        </a>
+      </div>
+      <% } %> <% if (item?.homepage) {%>
+      <a
+        class="text-sx bold text-violet-500 hover:underline"
+        href="<%= item.homepage %>"
+        >Homepage</a
+      >
       <% } %>
     </div>
     <% }); %>

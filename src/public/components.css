@@ -7,3 +7,7 @@
 .htmx-request.htmx-indicator{
     display:inline;
 }
+
+*{
+    font-family: 'Poppins', sans-serif;
+}

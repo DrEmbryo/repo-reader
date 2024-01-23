@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Test Page</title>
+    <title>Repo Viewer</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -18,22 +18,29 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,400;0,600;0,700;0,800;1,100;1,200;1,400;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="components.css" />
   </head>
-  <body class="bg-neutral-800">
-    <main>
-      <form
-        hx-post="/search"
-        hx-target="#search-results"
-        hx-indicator="#indicator"
-        hx-ext="loading-states"
-      >
-        <%- include('./components/search.ejs') %>
-        <div class="flex justify-center items-center mb-4">
-          <%- include('./components/loader.ejs') %>
-          <div id="search-results"></div>
-        </div>
-      </form>
-    </main>
+  <body class="bg-stone-200">
+    <%- include('./components/header.ejs') %>
+    <form
+      hx-post="/search"
+      hx-target="#search-results"
+      hx-indicator="#indicator"
+      hx-ext="loading-states"
+    >
+      <%- include('./components/search.ejs') %>
+      <div class="flex justify-center items-center mb-4">
+        <%- include('./components/loader.ejs') %>
+        <div id="search-results"></div>
+      </div>
+    </form>
   </body>
 </html>
