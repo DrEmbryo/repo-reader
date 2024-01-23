@@ -37,6 +37,9 @@ app.post("/search", async (req, res) => {
 
   const totalPages = Math.floor(repos.data.total_count / itemsPerPage);
 
+  if (repos.data.total_count === 0)
+    return res.render("components/empty-results");
+
   return res.render("components/repository-card", {
     repos: repos.data.items,
     pages: totalPages,
