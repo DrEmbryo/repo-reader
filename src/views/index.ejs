@@ -39,7 +39,22 @@
       <%- include('./components/search.ejs') %>
       <div class="flex justify-center items-center mb-4">
         <%- include('./components/loader.ejs') %>
-        <div id="search-results"></div>
+        <div id="search-results">
+          <div data-loading-class="hidden" class="text-center">
+            <span
+              class="text-transparent bg-gradient-to-r from-violet-500 to-violet-700 bg-clip-text text-9xl flex items-center justify-center"
+            >
+              <i class="fa-solid fa-user-astronaut"></i>
+              <i class="fa-solid fa-hand-point-up text-6xl"></i>
+            </span>
+            <h2 class="text-stone-700 font-bold text-4xl mt-4">
+              Explore Github Repositories
+            </h2>
+            <p class="text-stone-500">
+              Don be shy, type a repo name, and let's explore!
+            </p>
+          </div>
+        </div>
       </div>
     </form>
   </body>
