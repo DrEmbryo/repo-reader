@@ -6,11 +6,12 @@
     hx-vals='{"page": "<%= parseInt(activePage, 10) - 1 %>"}'
     hx-include="#search"
     class=" 
-    bg-gray-600 hover:bg-gray-800 
+    bg-stone-600 hover:bg-stone-800 
     text-white hover:text-teal-500
     transition-all  
-    border border-transparent hover:border-teal-500 rounded 
+    rounded font-semibold
     w-8 h-8 ml-2 
+    shadow-md hove:shadow-lg
     cursor-pointer"
     >
     &lt;
@@ -25,11 +26,12 @@
       hx-include="#search"
       class=" 
       <%- activePage == page ? 
-      "bg-gray-900 text-white border-transparent hover:border-teal-500 hover:text-teal-500" : 
-      "bg-gray-100 text-black hover:border-teal-500 hover:text-teal-500 hover:bg-slate-700" %>
+      "bg-stone-800 text-white hover:text-teal-500" : 
+      "bg-stone-100 text-black hover:text-white hover:bg-stone-800" %>
       transition-all 
-      border rounded 
+      rounded font-semibold
       w-8 h-8 ml-2 
+      shadow-md hove:shadow-lg
       cursor-pointer"
     >
       <%= page %>
@@ -43,11 +45,12 @@
     hx-vals='{"page": "<%= parseInt(activePage, 10) + 1 %>"}'
     hx-include="#search"
     class=" 
-    bg-gray-600 hover:bg-gray-800 
+    bg-stone-600 hover:bg-stone-800 
     text-white hover:text-teal-500
-    transition-all  
-    border border-transparent hover:border-teal-500 rounded 
+    transition-all font-semibold
+    border-transparent rounded 
     w-8 h-8 ml-2 
+    shadow-md hove:shadow-lg
     cursor-pointer"
     >
     &gt;

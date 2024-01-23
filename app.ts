@@ -2,7 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 
 import { Octokit } from "octokit";
-import { getPages } from "./src/utils/getPageintion";
+import { getPages } from "./src/utils/getPagination";
 
 const app = express();
 app.set("view engine", "ejs");
