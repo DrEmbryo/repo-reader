@@ -39,7 +39,9 @@
       <%- include('./components/search.ejs') %>
       <div class="flex justify-center items-center mb-4">
         <%- include('./components/loader.ejs') %>
-        <div id="search-results"></div>
+        <div id="search-results">
+          <%- include('./components/empty-initial') %>
+        </div>
       </div>
     </form>
   </body>
