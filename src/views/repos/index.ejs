@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Repo Viewer</title>
+    <title>Repositories</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -29,16 +29,16 @@
     <link rel="stylesheet" href="components.css" />
   </head>
   <body class="bg-stone-200">
-    <%- include('./components/header.ejs') %>
+    <%- include('../common/header.ejs') %>
     <form
-      hx-post="/search"
+      hx-post="repos/search"
       hx-target="#search-results"
       hx-indicator="#indicator"
       hx-ext="loading-states"
     >
       <%- include('./components/search.ejs') %>
       <div class="flex justify-center items-center mb-4">
-        <%- include('./components/loader.ejs') %>
+        <%- include('../common/loader.ejs') %>
         <div id="search-results">
           <%- include('./components/empty-initial') %>
         </div>
