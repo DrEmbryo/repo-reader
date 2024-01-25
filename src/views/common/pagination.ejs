@@ -1,6 +1,6 @@
 <div class="flex flex-wrap items-center justify-center max-w-screen-xl mt-4">
     <button
-    hx-post="/search"
+    hx-post="repos/search"
     hx-target="#search-results"
     hx-indicator="#indicator"
     hx-vals='{"page": "<%= parseInt(activePage, 10) - 1 %>"}'
@@ -19,7 +19,7 @@
 
     <% pagination.forEach(function(page){ %>
     <button
-      hx-post="/search"
+      hx-post="repos/search"
       hx-target="#search-results"
       hx-indicator="#indicator"
       hx-vals='{"page": "<%= page %>"}'
@@ -39,7 +39,7 @@
     <% }); %>
 
     <button
-    hx-post="/search"
+    hx-post="repos/search"
     hx-target="#search-results"
     hx-indicator="#indicator"
     hx-vals='{"page": "<%= parseInt(activePage, 10) + 1 %>"}'
