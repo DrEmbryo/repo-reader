@@ -2,44 +2,55 @@
   <div class="max-w-screen-xl grid grid-cols-5 gap-4">
     <% repos.forEach(function(repository) { %>
     <div
-      class="min-h-64 bg-white shadow-md rounded px-6 py-4 max-w-80 hover:shadow-xl transition duration-150 ease-out hover:ease-in"
+      class="flex flex-col justify-between bg-white shadow-md rounded px-6 py-4 max-w-80 hover:shadow-xl transition duration-150 ease-out hover:ease-in"
     >
-      <div
-        class="text-xl text-transparent bg-gradient-to-r from-violet-500 to-teal-500 bg-clip-text"
-      >
-        <a href="<%= repository.html_url %>"> <%= repository.name %> </a>
-      </div>
-      <div class="text-xs mb-1.5">
-        <span class="text-violet-700"> by <%= repository.owner.login %></span>
-      </div>
-      <div class="text-pretty"><%= repository.description %></div>
-      <div>
-        <div class="flex text-sm mb-1.5">
-          <div class="mr-2">
-            <i class="fa-solid fa-star"></i> <%= repository.score %>
-          </div>
-          <div class="mr-2">
-            <i class="fa-solid fa-eye"></i> <%= repository.watchers %>
-          </div>
-          <% if (repository.language) { %>
-          <div><i class="fa-solid fa-code"></i> <%= repository.language %></div>
-          <% } %>
+      <div class="mb-4">
+        <div
+          class="text-xl text-transparent bg-gradient-to-r from-violet-500 to-teal-500 bg-clip-text"
+        >
+          <a href="<%= repository.html_url %>"> <%= repository.name %> </a>
         </div>
+        <div class="text-xs mb-1.5">
+          <span class="text-violet-700"> by <%= repository.owner.login %></span>
+        </div>
+        <div class="text-pretty"><%= repository.description %></div>
+        <div>
+          <div class="flex text-sm mb-1.5">
+            <div class="mr-2">
+              <i class="fa-solid fa-star"></i> <%= repository.score %>
+            </div>
+            <div class="mr-2">
+              <i class="fa-solid fa-eye"></i> <%= repository.watchers %>
+            </div>
+            <% if (repository.language) { %>
+            <div>
+              <i class="fa-solid fa-code"></i> <%= repository.language %>
+            </div>
+            <% } %>
+          </div>
+        </div>
+        <% if (repository.license) {%>
+        <div class="text-xs">
+          <a href="<%= repository.license.url %>">
+            <i class="fa-solid fa-file-signature"></i>
+            <%= repository.license.name %>
+          </a>
+        </div>
+        <% } %>
       </div>
-      <% if (repository.license) {%>
-      <div class="text-xs">
-        <a href="<%= repository.license.url %>">
-          <i class="fa-solid fa-file-signature"></i>
-          <%= repository.license.name %>
-        </a>
+      <div class="flex justify-center">
+        <% if (repository?.homepage) {%>
+        <a
+          class="text-sx bold text-violet-500"
+          href="<%= repository.homepage %>"
+          ><div
+            class="bg-violet-200 border rounded border-violet-500 px-4 py-2 hover:border-violet-700 hover:text-violet-700 transition ease-out md:ease-in"
+          >
+            Homepage
+          </div></a
+        >
+        <% } %>
       </div>
-      <% } %> <% if (repository?.homepage) {%>
-      <a
-        class="text-sx bold text-violet-500 hover:underline"
-        href="<%= repository.homepage %>"
-        >Homepage</a
-      >
-      <% } %>
     </div>
     <% }); %>
   </div>

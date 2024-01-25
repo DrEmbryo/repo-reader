@@ -1,15 +1,9 @@
 import express from "express";
 
-import { Octokit } from "octokit";
 import { getPages } from "../../utils/getPagination";
+import { octokitClient } from "../../utils/octokitClient";
 
 export const repositoryRouts = express.Router();
-
-const { GITHUB_TOKEN } = process.env;
-
-const octokit = new Octokit({
-  auth: GITHUB_TOKEN,
-});
 
 repositoryRouts.get("/", async function (req, res) {
   res.render("./repos/index");
@@ -19,7 +13,7 @@ repositoryRouts.post("/search", async (req, res) => {
   const itemsPerPage = 10;
   const activePage = req.body?.page || 1;
 
-  const repos = await octokit.request("GET /search/repositories", {
+  const repos = await octokitClient.request("GET /search/repositories", {
     q: encodeURIComponent(req.body.search),
     per_page: 10,
     page: activePage,
