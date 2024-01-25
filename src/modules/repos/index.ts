@@ -15,7 +15,7 @@ repositoryRouts.post("/search", async (req, res) => {
 
   const repos = await octokitClient.request("GET /search/repositories", {
     q: encodeURIComponent(req.body.search),
-    per_page: 10,
+    per_page: itemsPerPage,
     page: activePage,
     headers: {
       "X-GitHub-Api-Version": "2022-11-28",
