@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include('../common/head.ejs', {title: 'Repositories'}) %>
+  <%- include('../common/head.ejs', {title: 'Users'}) %>
   <body class="bg-stone-200">
-    <%- include('../common/header.ejs', {active: 'Repositories'}) %>
+    <%- include('../common/header.ejs', {active: 'Users'}) %>
     <form
-      hx-post="repos/search"
+      hx-post="users/search"
       hx-target="#search-results"
       hx-indicator="#indicator"
       hx-ext="loading-states"

@@ -1,3 +1,16 @@
-<div
-  class="flex justify-end items-center bg-stone-300 shadow-md px-8 pt-6 pb-8 mb-4"
-></div>
+<div class="flex justify-center items-center mb-8 bg-stone-300 shadow-md">
+  <div class="max-w-screen-xl flex">
+    <% [ {name: "Repositories", link: '/repos'}, {name: "Users", link:
+    '/users'}, ].forEach(function(navItem) { %>
+    <a href="<%= navItem.link %>">
+      <div
+        class="h-full px-4 py-4 border-b-4 border-transparent cursor-pointer
+        <%- active == navItem.name ? "border-violet-500" : "hover:border-violet-200" %> 
+        text-violet-900 hover:text-violet-700 transition duration-150 ease-out hover:ease-in"
+      >
+        <%= navItem.name %>
+      </div>
+    </a>
+    <% }); %>
+  </div>
+</div>

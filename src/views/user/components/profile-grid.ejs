@@ -1,0 +1,14 @@
+<div class="flex max-w-screen-xl" data-loading-class="hidden">
+  <div class="flex flex-col mr-4">
+    <div class="mb-4">
+      <%- include('./profile-card', {github_url: user.html_url, avatar_url:
+      user.avatar_url, name: user.name, login: user.login, bio: user.bio}) %>
+    </div>
+    <div>
+      <%- include('./contact-card', {company: user.company, location:
+      user.location, email: user.email})%>
+    </div>
+  </div>
+
+  <div><%- include('./following-list') %></div>
+</div>
